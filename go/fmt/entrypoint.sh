@@ -29,7 +29,7 @@ fi
 
 # Get list of unformatted files.
 set +e
-FILES=$(sh -c "gofmt -l $(find . -path ./vendor -prune -o -type f -iname '*.go' -print)" 2>&1)
+FILES=$(gofmt -l $(find . -path ./vendor -prune -o -type f -iname '*.go' -print) 2>&1)
 echo "$FILES"
 set -e
 
