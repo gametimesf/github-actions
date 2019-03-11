@@ -18,7 +18,7 @@ cd "${GO_WORKING_DIR:-.}"
 
 # Check if any files are not formatted.
 set +e
-test -z "$(gofmt -l -d -e $(find . -type f -iname '*.go'))"
+test -z "$(gofmt -l -d -e $(find . -path ./vendor -prune -o -type f -iname '*.go' -print))"
 SUCCESS=$?
 set -e
 
@@ -29,7 +29,7 @@ fi
 
 # Get list of unformatted files.
 set +e
-FILES=$(sh -c "gofmt -l . $*" 2>&1)
+FILES=$(gofmt -l $(find . -path ./vendor -prune -o -type f -iname '*.go' -print) 2>&1)
 echo "$FILES"
 set -e
 
