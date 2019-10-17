@@ -1,30 +1,19 @@
 #!/bin/sh
 set -e
 
-# See what kind of action this is
-ACTION=$(cat /github/workflow/event.json | jq -r .action)
-case $ACTION in
-	opened)
-		;;
-	synchronize)
-		;;
-	*)
-		echo "Not a PR open or push, exiting"
-		exit 0
-		;;
-esac
+echo "Downloading gomodcheck..."
 
-cd /
+pushd /
 git config --global url."https://${ORG_GITHUB_TOKEN}@github.com/gametimesf".insteadOf "https://github.com/gametimesf"
 go get github.com/gametimesf/ops/gomodcheck
+popd
 
 export GITHUB_ACCESS_TOKEN="$ORG_GITHUB_TOKEN"
-
-cd "${GO_WORKING_DIR:-.}"
 
 set +e
 PROBLEMS=$(gomodcheck)
 SUCCESS=$?
+set -e
 
 # Exit if `gomodcheck` passes.
 if [ $SUCCESS -eq 0 ]; then
