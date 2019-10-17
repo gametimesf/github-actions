@@ -11,7 +11,7 @@ popd
 export GITHUB_ACCESS_TOKEN="$ORG_GITHUB_TOKEN"
 
 set +e
-PROBLEMS=$(gomodcheck 2>&1)
+PROBLEMS=$(gomodcheck 2>&1 | perl -pe 's/\e\[?.*?[\@-~]//g')
 SUCCESS=$?
 set -e
 
@@ -19,6 +19,8 @@ set -e
 if [ $SUCCESS -eq 0 ]; then
   exit 0
 fi
+
+echo "$PROBLEMS"
 
 # Iterate through each unformatted file.
 OUTPUT="Update the following dependencies:
