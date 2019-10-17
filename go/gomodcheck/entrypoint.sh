@@ -11,7 +11,7 @@ popd
 export GITHUB_ACCESS_TOKEN="$ORG_GITHUB_TOKEN"
 
 set +e
-PROBLEMS=$(gomodcheck)
+PROBLEMS=$(gomodcheck 2>&1)
 SUCCESS=$?
 set -e
 
