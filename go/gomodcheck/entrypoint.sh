@@ -15,6 +15,8 @@ PROBLEMS=$(LOG_LEVEL=info gomodcheck 2>&1)
 SUCCESS=$?
 set -e
 
+cat go.mod
+
 # strip ANSI colors from the output
 PROBLEMS="$(echo "$PROBLEMS" | perl -pe 's/\e\[?.*?[\@-~]//g')"
 echo "$PROBLEMS"
