@@ -20,6 +20,7 @@ if [ $SUCCESS -eq 0 ]; then
   exit 0
 fi
 
+# strip ANSI colors from the output
 PROBLEMS="$(echo "$PROBLEMS" | perl -pe 's/\e\[?.*?[\@-~]//g')"
 
 echo "$PROBLEMS"
