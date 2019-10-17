@@ -3,8 +3,8 @@ FROM golang:1.13
 RUN apt-get update
 RUN apt-get install -y jq
 
-LABEL "com.github.actions.name"="go fmt"
-LABEL "com.github.actions.description"="Run go fmt"
+LABEL "com.github.actions.name"="gomodcheck"
+LABEL "com.github.actions.description"="Run gomodcheck to see if any GT dependencies are not pointing to master"
 LABEL "com.github.actions.icon"="terminal"
 LABEL "com.github.actions.color"="blue"
 
