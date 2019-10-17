@@ -11,7 +11,7 @@ popd
 export GITHUB_ACCESS_TOKEN="$ORG_GITHUB_TOKEN"
 
 set +e
-PROBLEMS=$(gomodcheck 2>&1 | perl -pe 's/\e\[?.*?[\@-~]//g')
+PROBLEMS=$(gomodcheck 2>&1)
 SUCCESS=$?
 set -e
 
@@ -19,6 +19,8 @@ set -e
 if [ $SUCCESS -eq 0 ]; then
   exit 0
 fi
+
+PROBLEMS="$(echo "$PROBLEMS" | perl -pe 's/\e\[?.*?[\@-~]//g')"
 
 echo "$PROBLEMS"
 
