@@ -2,7 +2,7 @@
 
 Runs `gofmt`. To learn more about `gofmt`, see the [official docs](https://golang.org/cmd/gofmt/).
 
-```hcl
+```yml
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
