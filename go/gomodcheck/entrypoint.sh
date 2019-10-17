@@ -11,19 +11,18 @@ popd
 export GITHUB_ACCESS_TOKEN="$ORG_GITHUB_TOKEN"
 
 set +e
-PROBLEMS=$(gomodcheck 2>&1)
+PROBLEMS=$(LOG_LEVEL=info gomodcheck 2>&1)
 SUCCESS=$?
 set -e
+
+# strip ANSI colors from the output
+PROBLEMS="$(echo "$PROBLEMS" | perl -pe 's/\e\[?.*?[\@-~]//g')"
+echo "$PROBLEMS"
 
 # Exit if `gomodcheck` passes.
 if [ $SUCCESS -eq 0 ]; then
   exit 0
 fi
-
-# strip ANSI colors from the output
-PROBLEMS="$(echo "$PROBLEMS" | perl -pe 's/\e\[?.*?[\@-~]//g')"
-
-echo "$PROBLEMS"
 
 OUTPUT="Update the following dependencies:
 $PROBLEMS"
