@@ -25,7 +25,6 @@ PROBLEMS="$(echo "$PROBLEMS" | perl -pe 's/\e\[?.*?[\@-~]//g')"
 
 echo "$PROBLEMS"
 
-# Iterate through each unformatted file.
 OUTPUT="Update the following dependencies:
 $PROBLEMS"
 
