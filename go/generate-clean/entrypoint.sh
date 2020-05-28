@@ -17,7 +17,7 @@ cd "${GO_WORKING_DIR:-.}"
 
 # run go generate
 set +e
-test -z "$(go generate ./...)"
+go generate ./...
 SUCCESS=$?
 set -e
 
