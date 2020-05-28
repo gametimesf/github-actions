@@ -35,8 +35,12 @@ fi
 # check if any files changed
 git diff-index --quiet HEAD
 if [ $? -eq 0 ]; then
+  echo "no files changed"
   exit 0
 fi
+
+echo "files changed"
+git status
 
 # Post results back as comment.
 COMMENT="#### \`go generate\`
