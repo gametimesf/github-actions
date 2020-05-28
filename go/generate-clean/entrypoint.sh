@@ -21,6 +21,7 @@ cd "${GO_WORKING_DIR:-.}"
 set +e
 
 echo "pre run"
+pwd
 ls -R
 git status
 
