@@ -26,7 +26,9 @@ if [ $SUCCESS -ne 0 ]; then
 fi
 
 # check if any files changed
-git diff-index --quiet HEAD
+# Y U NO WORK?!?!
+# git diff-index --quiet HEAD
+git status | grep --quiet "nothing to commit, working tree clean"
 SUCCESS=$?
 if [ $SUCCESS -eq 0 ]; then
   echo "no files changed"
