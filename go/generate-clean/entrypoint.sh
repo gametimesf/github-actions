@@ -11,11 +11,6 @@ download_url=$(curl -s https://api.github.com/repos/go-swagger/go-swagger/releas
 curl -o /swagger -L'#' "$download_url"
 chmod +x /swagger
 
-# for some reason this isn't compiling OR working using precompiled binary, so it's faked out via Dockerfile
-#pushd /
-# go get github.com/davecheney/godoc2md
-#popd
-
 cd "${GO_WORKING_DIR:-.}"
 
 set +e
