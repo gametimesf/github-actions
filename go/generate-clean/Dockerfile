@@ -13,4 +13,5 @@ LABEL "homepage"="https://github.com/gametimesf/github-actions"
 LABEL "maintainer"="Andy Janata <andy.janata@gametime.co>"
 
 ADD entrypoint.sh /entrypoint.sh
+ADD godoc2md /bin/godoc2md
 ENTRYPOINT ["/entrypoint.sh"]
