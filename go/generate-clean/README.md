@@ -17,4 +17,6 @@ jobs:
       uses: gametimesf/github-actions/go/generate-clean@v0.5.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # this token must have access to the entire organization
+        ORG_GITHUB_TOKEN: ${{ secrets.ORG_GITHUB_TOKEN }}
 ```
