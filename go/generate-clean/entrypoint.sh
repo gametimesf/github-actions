@@ -15,17 +15,9 @@ cd "${GO_WORKING_DIR:-.}"
 
 set +e
 
-echo "pre run"
-pwd
-ls -R
-git status
-
 # run go generate
 go generate ./...
 SUCCESS=$?
-
-echo "post run"
-git status
 
 # Exit if `go generate` fails.
 if [ $SUCCESS -ne 0 ]; then
