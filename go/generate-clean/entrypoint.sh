@@ -18,14 +18,15 @@ chmod +x /swagger
 
 cd "${GO_WORKING_DIR:-.}"
 
+set +e
+
 echo "pre run"
+ls -R
 git status
 
 # run go generate
-set +e
 go generate ./...
 SUCCESS=$?
-set -e
 
 echo "post run"
 git status
@@ -38,7 +39,8 @@ fi
 
 # check if any files changed
 git diff-index --quiet HEAD
-if [ $? -eq 0 ]; then
+SUCCESS=$?
+if [ $SUCCESS -eq 0 ]; then
   echo "no files changed"
   exit 0
 fi
