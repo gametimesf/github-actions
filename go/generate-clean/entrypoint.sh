@@ -7,7 +7,7 @@ echo "Downloading go-swagger and godoc2md..."
 
 pushd /
 go get github.com/go-swagger/go-swagger
-go get github.com/morganhein/godoc2md
+go get github.com/davecheney/godoc2md
 popd
 
 
