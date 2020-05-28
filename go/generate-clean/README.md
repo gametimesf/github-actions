@@ -4,6 +4,8 @@ Runs `go generate` and verifies that no files changed as a result.
 
 It supports go-swagger and godoc2md as valid targets of `go generate`. Feel free to add support for more as needed.
 
+NOTE: godoc2md does not actually run. It's being a pain in the butt, so we make it be a no-op for purposes of this action.
+
 ```yml
 on:
   pull_request:
