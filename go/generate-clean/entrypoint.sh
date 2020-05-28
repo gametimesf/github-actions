@@ -2,15 +2,19 @@
 set -e
 
 git config --global url."https://${ORG_GITHUB_TOKEN}@github.com/gametimesf".insteadOf "https://github.com/gametimesf"
+export PATH="$PATH:/"
 
 echo "Downloading go-swagger..."
 
+download_url=$(curl -s https://api.github.com/repos/go-swagger/go-swagger/releases/latest | \
+  jq -r '.assets[] | select(.name | contains("'"$(uname | tr '[:upper:]' '[:lower:]')"'_amd64")) | .browser_download_url')
+curl -o /swagger -L'#' "$download_url"
+chmod +x /swagger
+
 pushd /
-go get github.com/go-swagger/go-swagger
 # for some reason this isn't compiling, use precompiled binary from Dockerfile
 # go get github.com/davecheney/godoc2md
 popd
-
 
 git config --global url."https://${ORG_GITHUB_TOKEN}@github.com/gametimesf".insteadOf "https://github.com/gametimesf"
 
