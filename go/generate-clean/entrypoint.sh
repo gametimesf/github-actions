@@ -11,20 +11,24 @@ download_url=$(curl -s https://api.github.com/repos/go-swagger/go-swagger/releas
 curl -o /swagger -L'#' "$download_url"
 chmod +x /swagger
 
-pushd /
-# for some reason this isn't compiling, use precompiled binary from Dockerfile
+# for some reason this isn't compiling OR working using precompiled binary, so it's faked out via Dockerfile
+#pushd /
 # go get github.com/davecheney/godoc2md
-popd
-
-git config --global url."https://${ORG_GITHUB_TOKEN}@github.com/gametimesf".insteadOf "https://github.com/gametimesf"
+#popd
 
 cd "${GO_WORKING_DIR:-.}"
+
+echo "pre run"
+git status
 
 # run go generate
 set +e
 go generate ./...
 SUCCESS=$?
 set -e
+
+echo "post run"
+git status
 
 # Exit if `go generate` fails.
 if [ $SUCCESS -ne 0 ]; then
