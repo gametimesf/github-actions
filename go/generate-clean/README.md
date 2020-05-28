@@ -2,6 +2,8 @@
 
 Runs `go generate` and verifies that no files changed as a result.
 
+It supports go-swagger and godoc2md as valid targets of `go generate`. Feel free to add support for more as needed.
+
 ```yml
 on:
   pull_request:

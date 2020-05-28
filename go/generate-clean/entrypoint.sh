@@ -3,6 +3,16 @@ set -e
 
 git config --global url."https://${ORG_GITHUB_TOKEN}@github.com/gametimesf".insteadOf "https://github.com/gametimesf"
 
+echo "Downloading go-swagger and godoc2md..."
+
+pushd /
+go get github.com/go-swagger/go-swagger
+go get github.com/morganhein/godoc2md
+popd
+
+
+git config --global url."https://${ORG_GITHUB_TOKEN}@github.com/gametimesf".insteadOf "https://github.com/gametimesf"
+
 cd "${GO_WORKING_DIR:-.}"
 
 # run go generate
