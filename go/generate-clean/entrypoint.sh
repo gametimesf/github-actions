@@ -11,6 +11,9 @@ download_url=$(curl -s https://api.github.com/repos/go-swagger/go-swagger/releas
 curl -o /swagger -L'#' "$download_url"
 chmod +x /swagger
 
+echo "Downloading ffjson..."
+go get -u github.com/pquerna/ffjson
+
 cd "${GO_WORKING_DIR:-.}"
 
 set +e
