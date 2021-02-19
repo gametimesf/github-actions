@@ -2,6 +2,7 @@
 set -e
 
 echo "Downloading gomodcheck..."
+export GOPRIVATE=github.com/gametimes
 
 pushd /
 git config --global url."https://${ORG_GITHUB_TOKEN}@github.com/gametimesf".insteadOf "https://github.com/gametimesf"
