@@ -2,10 +2,11 @@
 set -e
 
 echo "Downloading gomodcheck..."
+export GOPRIVATE=github.com/gametimesf
 
 pushd /
 git config --global url."https://${ORG_GITHUB_TOKEN}@github.com/gametimesf".insteadOf "https://github.com/gametimesf"
-go get github.com/gametimesf/ops/gomodcheck
+go install github.com/gametimesf/ops/gomodcheck@latest
 popd
 
 export GITHUB_ACCESS_TOKEN="$ORG_GITHUB_TOKEN"
